@@ -20,14 +20,29 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
         //<![CDATA[
         function load() {
             var name = "<?php print $name; ?>";
-
-            //delete this line 
-            //window.parent.frames["message"].document.getElementById("username").setAttribute("value", name)
-
             setTimeout("document.getElementById('msg').focus()",100);
         }
+		
+		//select color
+        function select(color) {
+            var fld = document.getElementById("color");
+            if (color != fld.value) {
+                if (!confirm("Do you want to use the new color?!"))
+                    return;
+                fld.value=color;
+            }
+        }
+        
         //]]>
         </script>
+		<style>
+            div {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+            }
+        
+		</style>
     </head>
 
     <body style="text-align: left" onload="load()">
@@ -42,7 +57,20 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
                 <tr>
                     <td><input class="button" type="submit" value="Send Your Message" style="width: 200px" /></td>
                 </tr>
+				<tr>
+					<td>
+						<div style="position:relative">
+							<div style="background-color:red;left:0px" onclick="select('red')"></div>
+							<div style="background-color:yellow;left:50px" onclick="select('yellow')"></div>
+							<div style="background-color:green;left:100px" onclick="select('green')"></div>
+							<div style="background-color:cyan;left:150px" onclick="select('cyan')"></div>
+							<div style="background-color:blue;left:200px" onclick="select('blue')"></div>
+							<div style="background-color:magenta;left:250px" onclick="select('magenta')"></div>
+						</div>
+					</td>
+				</tr>
             </table>
+			<input type="hidden" name="color" id="color" value="magenta">
         </form>
         
         <!--logout button-->

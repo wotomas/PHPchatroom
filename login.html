@@ -18,18 +18,28 @@
         //username input checking
        function checkInput() {
             //username cannot be empty
-
-
-
-            //username cannot contain illeagl character
-           
+			var username = document.getElementById("name").value;
+			if(username == "") {
+				alert("Please enter a name!");			
+				return false;
+			}
+			var validcharacters = '1234567890_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+			//username cannot contain illeagl character
+			for (var i = 0, l = username.length; i < l; ++i) {
+				if (validcharacters.indexOf(username.substr(i, 1)) == -1) {
+					alert("Invalid User Name! Please don't use space and the following Characters. \"\';:<>(){}.,!@#$%^&*-+=");
+					return false;
+				}
+			}
+			return true;
+		
         }
         
         </script>
     </head>
 
     <body onload="clearMessage()">
-        <form method="post" action="login.php" onsubmit="javascript:checkInput()">
+        <form method="post" action="login.php" onsubmit="return checkInput()">
             <table border="0" cellpadding="5" cellspacing="0">
                 <tr>
                     <td>Please enter your user name:</td>

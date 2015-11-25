@@ -82,16 +82,34 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
         }
 
         function updateChat(xmlDoc) {
-
+			
             //point to the message nodes
             var messages = xmlDoc.getElementsByTagName("message");
-
+			//console.log(messages);
+			
+			
+			//Obtain user name and message content from each message node
+			for(var i = lastMsgID; i < messages.length; i++) {
+				var messageNode = messages.item(i);
+				//console.log(messageNode);
+				//var name = messageNode.getElementById("name");
+				var message = messageNode.innerHTML;
+				var username = messageNode.getAttribute('name');
+				var color = messageNode.getAttribute('color');
+				console.log(color);
+				//console.log(message + " " + username);
+				//Call function showMessage() to display message
+				showMessage(username, message, color);
+			}
+			//Record current message node(messages.length) so that you can start to
+			//process the messages from here next time
+			lastMsgID = messages.length;
+			
             // create a string for the messages
             /* Add your code here */
         }
 
-        function showMessage(nameStr, contentStr){
-               
+        function showMessage(nameStr, contentStr, colorStr){
                 var node = document.getElementById("chattext");
                 // Create the name text span
                 var nameNode = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
@@ -100,6 +118,7 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
                 nameNode.setAttribute("x", 100);
                 nameNode.setAttribute("dy", 20);
                 nameNode.appendChild(document.createTextNode(nameStr));
+				nameNode.setAttribute("fill", colorStr)
 
                 // Add the name to the text node
                 node.appendChild(nameNode);
@@ -109,8 +128,9 @@ print "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 
                 // Set the attributes and create the text
                 conetentNode.setAttribute("x", 200);
+				conetentNode.setAttribute("fill", colorStr)
                 conetentNode.appendChild(document.createTextNode(contentStr));
-
+				
                 // Add the name to the text node
                 node.appendChild(conetentNode);
         }

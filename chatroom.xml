@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <chatroom>
-  <users><user name="dfdf"/></users>
-  <messages/>
+  <users><user name="dDD"/><user name="Buy"/><user name="Joe"/><user name="Joe"/><user name="Jimmy"/><user name="dd"/><user name="342"/><user name="d"/></users>
+  <messages><message name="dDD" color="green">What are you saying?</message><message name="dDD" color="magenta">ddf</message><message name="Buy" color="red">no!</message><message name="Buy" color="blue">Why not?</message><message name="Joe" color="cyan">Ramond</message><message name="Joe" color="yellow">Right?</message><message name="d" color="yellow">Hey</message></messages>
 </chatroom>
